@@ -55,3 +55,5 @@ Before you know it, you should see the app running in your _Android Emulator_ or
 ## Congratulations! :tada:
 
 You've successfully run the RNReviewApp. :partying_face:
+
+![](demo.mov)
