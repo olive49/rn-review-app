@@ -4,7 +4,17 @@ Right now, you're looking at our MVP (Minimum Viable Product). More to come!
 
 # Getting Started
 
-## Step 1: Start the Metro Server
+## Step 1: Install dependencies
+
+```bash
+# using npm
+npm install
+
+# OR using Yarn
+yarn add
+```
+
+## Step 2: Start the Metro Server
 
 First, you will need to start **Metro**, the JavaScript _bundler_ that comes _with_ React Native. Open your command line at the project's root and run the following command:
 
@@ -16,7 +26,7 @@ npm start
 yarn start
 ```
 
-## Step 2: Launch the Application
+## Step 3: Launch the Application
 
 Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal in the project's _root_. Run the following command to start the _Android_ or _iOS_ app:
 
