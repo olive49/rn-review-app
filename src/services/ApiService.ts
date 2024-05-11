@@ -4,7 +4,7 @@ import { mockReviews } from "../constants/mockReviews";
 class ApiService {
   private reviews: Review[] = mockReviews;
 
-  private addDelay = (ms) => {
+  private addDelay = (ms: number): Promise<void> => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
@@ -13,7 +13,9 @@ class ApiService {
       await this.addDelay(HALF_SECOND);
       return this.reviews;
     } catch (err) {
-      throw new Error(`Failed to fetch reviews: ${err.message}`);
+      throw new Error(
+        `Failed to fetch reviews: ${err instanceof Error ? err.message : err}`
+      );
     }
   }
 
@@ -23,7 +25,9 @@ class ApiService {
       this.reviews.push(newReview);
       return { success: true };
     } catch (err) {
-      throw new Error(`Failed to post reviews: ${err.message}`);
+      throw new Error(
+        `Failed to post reviews: ${err instanceof Error ? err.message : err}`
+      );
     }
   }
 }

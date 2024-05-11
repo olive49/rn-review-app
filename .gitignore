@@ -1,0 +1,14 @@
+# node.js
+#
+node_modules/
+
+# Xcode
+#
+build/
+
+# Android
+#
+build/
+.idea
+.gradle
+local.properties

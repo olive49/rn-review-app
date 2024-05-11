@@ -15,11 +15,7 @@ import Button from "../components/Button";
 import { basePalette } from "../styles/colors";
 import useForm from "../hooks/useForm";
 import { StackNavigationProp } from "@react-navigation/stack";
-
-type RootStack = {
-  Form: undefined;
-  ReviewDisplay: undefined;
-};
+import { RootStack } from "../navigation/stacks/RootStack";
 
 interface IProps {
   onFormSubmit: (form: Form) => void;
@@ -40,7 +36,7 @@ const FormScreen = ({ onFormSubmit, navigation }: IProps) => {
   const [activityIndicator, setActivityIndicator] = useState<boolean>(false);
 
   const onPressSeeReviews = useCallback(
-    () => navigation.navigate("ReviewDisplay"),
+    () => navigation.navigate("Reviews"),
     [navigation]
   );
 
@@ -74,7 +70,7 @@ const FormScreen = ({ onFormSubmit, navigation }: IProps) => {
           title="See reviews"
           containerStyle={styles.buttonContainer}
         />
-        <View style={styles.formContainer}>
+        <View style={styles.formContainer} accessibilityLabel="Review Form">
           <View style={styles.bodyContainer}>
             {activityIndicator && (
               <ActivityIndicator
@@ -129,7 +125,9 @@ const styles = StyleSheet.create({
   buttonContainer: {
     padding: 10,
   },
-  titleContainer: {},
+  titleContainer: {
+    flex: 0.2,
+  },
   contentContainer: {
     flex: 0.45,
   },

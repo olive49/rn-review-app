@@ -2,19 +2,21 @@ import React, { memo } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Rating from "./Rating";
 import { basePalette } from "../styles/colors";
-import { Review } from "../constants/global";
 
 interface IProps {
-  item: Review;
+  title: string;
+  content: string;
+  rating: number;
+  id: number;
 }
 
-const ReviewItem = ({ item }: IProps) => {
+const ReviewItem = ({ title, content, rating, id }: IProps) => {
   return (
     <View style={styles.item}>
-      <Text style={styles.title}>ID: {item?.id}</Text>
-      <Text style={styles.title}>Title: {item?.title}</Text>
-      <Text style={styles.title}>Content: {item?.content}</Text>
-      <Rating rating={item.rating} readOnly />
+      <Text style={styles.title}>ID: {id}</Text>
+      <Text style={styles.title}>Title: {title}</Text>
+      <Text style={styles.title}>Content: {content}</Text>
+      <Rating rating={rating} readOnly />
     </View>
   );
 };

@@ -9,7 +9,11 @@ interface IProps {
   onPress?: (i: number) => void;
 }
 
-const Rating = ({ rating, readOnly = false, onPress = () => {} }: IProps) => {
+const Rating = ({
+  rating = 0,
+  readOnly = false,
+  onPress = () => {},
+}: IProps) => {
   const { rating_selected, rating_unselected } = basePalette;
   const getBackgroundColor = (i: number) => {
     return i + 1 <= rating ? rating_selected : rating_unselected;
@@ -18,6 +22,7 @@ const Rating = ({ rating, readOnly = false, onPress = () => {} }: IProps) => {
   const circles = Array.from({ length: RATING_LENGTH }, (_, i) => (
     <Pressable
       key={i}
+      testID={`circle-${i}`}
       accessible={!readOnly && true}
       accessibilityRole={readOnly ? "none" : "radio"}
       accessibilityState={{ selected: i < rating }}

@@ -10,42 +10,40 @@ import { Review } from "../constants/global";
 import { StackNavigationProp } from "@react-navigation/stack";
 import Button from "../components/Button";
 import ReviewItem from "../components/ReviewItem";
+import { RootStack } from "../navigation/stacks/RootStack";
 
-type RootStack = {
-  Form: undefined;
-  ReviewDisplay: undefined;
-};
 interface IProps {
   data: Review[];
   navigation: StackNavigationProp<RootStack>;
 }
 
-const ReviewScreen = ({ data, navigation }: IProps) => {
+const ReviewsScreen = ({ data, navigation }: IProps) => {
   const onPressWriteReview = useCallback(
     () => navigation.navigate("Form"),
     [navigation]
   );
 
-  const keyExtractor = useCallback(
-    (item: Review): string => item.id.toString(),
-    []
-  );
-
   const renderItem = useCallback(({ item }: ListRenderItemInfo<Review>) => {
-    return <ReviewItem item={item} />;
+    return (
+      <ReviewItem
+        id={item.id}
+        content={item.content}
+        rating={item.rating}
+        title={item.title}
+      />
+    );
   }, []);
 
   return (
     <View style={styles.container}>
-      <View style={styles.buttonContain}>
+      <View style={styles.buttonContainer}>
         <Button onPress={onPressWriteReview} title="Write a review" />
       </View>
       <FlatList
         data={data}
-        keyExtractor={keyExtractor}
+        keyExtractor={(item) => item.id.toString()}
         initialNumToRender={5}
         maxToRenderPerBatch={5}
-        windowSize={4}
         renderItem={renderItem}
         ListEmptyComponent={
           <Text style={styles.notAvailableText}>No reviews available</Text>
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 10,
   },
-  buttonContain: {
+  buttonContainer: {
     margin: 10,
   },
   notAvailableText: {
@@ -70,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default memo(ReviewScreen);
+export default memo(ReviewsScreen);

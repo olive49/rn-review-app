@@ -11,7 +11,7 @@ interface UseFormProps {
   validateForm: () => boolean;
 }
 
-const useForm = (): UseFormProps => {
+export default function useForm(): UseFormProps {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [rating, setRating] = useState<number>(0);
@@ -51,6 +51,4 @@ const useForm = (): UseFormProps => {
     resetForm,
     validateForm,
   };
-};
-
-export default useForm;
+}

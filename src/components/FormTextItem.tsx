@@ -23,7 +23,7 @@ const FormTextItem = ({
   containerStyle,
 }: IProps) => {
   return (
-    <View style={[styles.container, containerStyle]}>
+    <View style={[styles.container, containerStyle]} testID="container">
       <Text style={styles.title}>{itemTitle}</Text>
       <TextInput
         style={styles.input}
@@ -31,6 +31,8 @@ const FormTextItem = ({
         onChangeText={onChangeText}
         multiline
         numberOfLines={4}
+        accessibilityLabel={itemTitle}
+        accessibilityHint={`Enter the details for the ${itemTitle} of your review here`}
       />
     </View>
   );
@@ -54,6 +56,7 @@ const styles = StyleSheet.create({
     borderColor: basePalette.border_color,
     borderRadius: 8,
     fontSize: 16,
+    textAlignVertical: "top",
   },
 });
 
