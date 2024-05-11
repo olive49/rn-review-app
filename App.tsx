@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet, StatusBar } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -65,6 +65,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: basePalette.main_background,
-    paddingVertical: 15,
+    paddingVertical: 20,
   },
 });

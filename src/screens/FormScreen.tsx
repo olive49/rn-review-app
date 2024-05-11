@@ -72,13 +72,11 @@ const FormScreen = ({ onFormSubmit, navigation }: IProps) => {
         />
         <View style={styles.formContainer} accessibilityLabel="Review Form">
           <View style={styles.bodyContainer}>
-            {activityIndicator && (
-              <ActivityIndicator
-                size="large"
-                color={basePalette.button_background}
-                style={styles.loading}
-              />
-            )}
+            <ActivityIndicator
+              size="large"
+              color={basePalette.button_background}
+              style={[styles.loading, { opacity: activityIndicator ? 1 : 0 }]}
+            />
             <FormTextItem
               itemTitle={"Title:"}
               text={title}
@@ -149,6 +147,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     alignItems: "center",
     justifyContent: "center",
+    pointerEvents: "none",
   },
 });
 
