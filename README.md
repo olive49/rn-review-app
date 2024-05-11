@@ -50,7 +50,7 @@ npm run ios
 yarn ios
 ```
 
-Before you know it, you should see the app running in your _Android Emulator_ or _iOS Simulator_. Assuming that your emulator/simulator is set up correctly.
+Before you know it, you should see the app running in your _Android Emulator_ or _iOS Simulator_. Assuming that your emulator/simulator is set up correctly. For troubleshooting the development environment setup, please refer to the React Native CLI documentation [here](https://reactnative.dev/docs/environment-setup).
 
 ## Congratulations! :tada:
 
