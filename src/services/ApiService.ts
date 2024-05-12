@@ -1,4 +1,5 @@
-import { Review, HALF_SECOND } from "../constants/global";
+import { Review } from "../constants/model";
+import { HALF_SECOND } from "../constants/global";
 import { mockReviews } from "../constants/mockReviews";
 
 class ApiService {

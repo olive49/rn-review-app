@@ -6,9 +6,9 @@ import {
   FlatList,
   ListRenderItemInfo,
 } from "react-native";
-import { Review } from "../constants/global";
 import { StackNavigationProp } from "@react-navigation/stack";
 import Button from "../components/Button";
+import { Review } from "../constants/model";
 import ReviewItem from "../components/ReviewItem";
 import { RootStack } from "../navigation/stacks/RootStack";
 

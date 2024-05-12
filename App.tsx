@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Platform, StyleSheet, StatusBar } from "react-native";
+import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import FormScreen from "./src/screens/FormScreen";
+import { basePalette } from "./src/styles/colors";
+import apiService from "./src/services/ApiService";
+import { Review, Form } from "./src/constants/model";
 import ReviewsScreen from "./src/screens/ReviewsScreen";
 import { mockReviews } from "./src/constants/mockReviews";
-import FormScreen from "./src/screens/FormScreen";
-import apiService from "./src/services/ApiService";
-import { Review, Form } from "./src/constants/global";
-import { basePalette } from "./src/styles/colors";
 
 const Stack = createStackNavigator();
 

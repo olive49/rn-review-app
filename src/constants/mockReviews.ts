@@ -1,4 +1,4 @@
-import { Review } from "./global";
+import { Review } from "./model";
 
 export const mockReviews: Review[] = [
   { id: 1, title: "First review", content: "review content", rating: 1 },

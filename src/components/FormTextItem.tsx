@@ -23,8 +23,10 @@ const FormTextItem = ({
   containerStyle,
 }: IProps) => {
   return (
-    <View style={[styles.container, containerStyle]} testID="container">
-      <Text style={styles.title}>{itemTitle}</Text>
+    <View
+      style={[styles.container, containerStyle]}
+      testID="text-input-container"
+    >
       <TextInput
         style={styles.input}
         value={text}
@@ -41,7 +43,6 @@ const FormTextItem = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
   },
   title: {
     fontSize: 18,
@@ -51,7 +52,8 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingBottom: 0,
     borderWidth: 1,
     borderColor: basePalette.border_color,
     borderRadius: 8,

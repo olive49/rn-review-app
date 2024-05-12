@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import { RATING_LENGTH } from "../constants/global";
 import { basePalette } from "../styles/colors";
+import { RATING_LENGTH } from "../constants/global";
 
 interface IProps {
   rating: number;
@@ -36,7 +36,11 @@ const Rating = ({
     />
   ));
 
-  return <View style={styles.container}>{circles}</View>;
+  return (
+    <View style={styles.container} testID="rating-container">
+      {circles}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
