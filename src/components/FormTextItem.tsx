@@ -1,32 +1,16 @@
 import React, { memo } from "react";
-import {
-  StyleSheet,
-  TextInput,
-  Text,
-  View,
-  ViewStyle,
-  StyleProp,
-} from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import { basePalette } from "../styles/colors";
 
 interface IProps {
   itemTitle: string;
   text: string;
   onChangeText: (updatedValue: string) => void;
-  containerStyle?: StyleProp<ViewStyle>;
 }
 
-const FormTextItem = ({
-  itemTitle,
-  text,
-  onChangeText,
-  containerStyle,
-}: IProps) => {
+const FormTextItem = ({ itemTitle, text, onChangeText }: IProps) => {
   return (
-    <View
-      style={[styles.container, containerStyle]}
-      testID="text-input-container"
-    >
+    <View style={styles.container} testID="text-input-container">
       <TextInput
         style={styles.input}
         value={text}
