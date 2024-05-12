@@ -15,4 +15,8 @@ describe("FormScreen", () => {
 
     expect(getByText("Submit Form")).toBeTruthy();
   });
+
+  //TODO: Add tests
+  // onFormSubmit called with correct data
+  // test activity indicator component style when activityIndicator set to true
 });

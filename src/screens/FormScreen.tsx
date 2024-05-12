@@ -2,19 +2,17 @@ import React, { memo, useCallback, useState } from "react";
 import {
   StyleSheet,
   View,
-  Text,
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
   ActivityIndicator,
 } from "react-native";
-import Rating from "../components/Rating";
-import FormTextItem from "../components/FormTextItem";
-import { Form } from "../constants/global";
+import { StackNavigationProp } from "@react-navigation/stack";
+import useForm from "../hooks/useForm";
+import { Form } from "../constants/model";
 import Button from "../components/Button";
 import { basePalette } from "../styles/colors";
-import useForm from "../hooks/useForm";
-import { StackNavigationProp } from "@react-navigation/stack";
+import { formConfig } from "../config/config";
 import { RootStack } from "../navigation/stacks/RootStack";
 
 interface IProps {
@@ -23,16 +21,8 @@ interface IProps {
 }
 
 const FormScreen = ({ onFormSubmit, navigation }: IProps) => {
-  const {
-    title,
-    content,
-    rating,
-    handleTitleChange,
-    handleContentChange,
-    handleRatingChange,
-    resetForm,
-    validateForm,
-  } = useForm();
+  const { formData, resetForm, validateForm, generateFormComponent } =
+    useForm(formConfig);
   const [activityIndicator, setActivityIndicator] = useState<boolean>(false);
 
   const onPressSeeReviews = useCallback(
@@ -45,10 +35,11 @@ const FormScreen = ({ onFormSubmit, navigation }: IProps) => {
   };
 
   const submitForm = async (): Promise<void> => {
-    const validForm = validateForm();
     try {
+      const validForm = validateForm();
       if (validForm) {
         setActivityIndicator(true);
+        const { title, content, rating } = formData as any;
         await onFormSubmit({ title, content, rating });
         resetForm();
         displayAlert("Thank you for your review!");
@@ -71,30 +62,13 @@ const FormScreen = ({ onFormSubmit, navigation }: IProps) => {
           containerStyle={styles.buttonContainer}
         />
         <View style={styles.formContainer} accessibilityLabel="Review Form">
-          <View style={styles.bodyContainer}>
-            <ActivityIndicator
-              size="large"
-              color={basePalette.button_background}
-              style={[styles.loading, { opacity: activityIndicator ? 1 : 0 }]}
-            />
-            <FormTextItem
-              itemTitle={"Title:"}
-              text={title}
-              onChangeText={handleTitleChange}
-              containerStyle={styles.titleContainer}
-            />
-            <FormTextItem
-              itemTitle={"Content:"}
-              text={content}
-              onChangeText={handleContentChange}
-              containerStyle={styles.contentContainer}
-            />
-            <View style={styles.ratingContainer}>
-              <Text style={styles.ratingText}>Rating:</Text>
-              <Rating rating={rating} onPress={handleRatingChange} />
-            </View>
-          </View>
-          <View style={styles.buttonContainer}>
+          <ActivityIndicator
+            size="large"
+            color={basePalette.button_background}
+            style={[styles.loading, { opacity: activityIndicator ? 1 : 0 }]}
+          />
+          {generateFormComponent()}
+          <View style={[styles.buttonContainer, styles.buttonContainerBottom]}>
             <Button onPress={submitForm} title="Submit Form"></Button>
           </View>
         </View>
@@ -110,34 +84,19 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     flex: 1,
-    margin: 10,
-    flexDirection: "column",
     flexGrow: 1,
-    justifyContent: "space-between",
+    margin: 10,
     backgroundColor: basePalette.highlighted_background,
     borderRadius: 10,
-  },
-  bodyContainer: {
-    flex: 1,
   },
   buttonContainer: {
     padding: 10,
   },
-  titleContainer: {
-    flex: 0.2,
-  },
-  contentContainer: {
-    flex: 0.45,
-  },
-  ratingText: {
-    fontSize: 18,
-    paddingHorizontal: 10,
-  },
-  ratingContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 20,
+  buttonContainerBottom: {
+    position: "absolute",
+    bottom: 0,
+    alignSelf: "center",
+    width: "100%",
   },
   loading: {
     position: "absolute",
@@ -148,6 +107,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     pointerEvents: "none",
+    zIndex: 5,
   },
 });
 

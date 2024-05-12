@@ -7,14 +7,14 @@ describe("<FormTextItem />", () => {
   const text = "mock text";
   const onChangeText = jest.fn();
   it("should exist", () => {
-    const { getByText } = render(
+    const { getByDisplayValue } = render(
       <FormTextItem
         itemTitle={itemTitle}
         text={text}
         onChangeText={onChangeText}
       />
     );
-    const formTextItem = getByText(itemTitle);
+    const formTextItem = getByDisplayValue(text);
     expect(formTextItem).toBeDefined();
   });
 
