@@ -4,10 +4,10 @@ import FormField from "./../FormField";
 import { FormFieldType } from "../../hooks/model";
 
 describe("FormField", () => {
-  const onChange = jest.fn();
+  const onChangeMock = jest.fn();
   it("renders text input correctly", () => {
     const { getByText, getAllByDisplayValue } = render(
-      <FormField label="title" value="" onChange={onChange} type="text" />
+      <FormField label="title" value="" onChange={onChangeMock} type="text" />
     );
 
     expect(getByText("title")).toBeTruthy();
@@ -19,7 +19,7 @@ describe("FormField", () => {
       <FormField
         label="title"
         value=""
-        onChange={() => {}}
+        onChange={onChangeMock}
         type={FormFieldType.TEXT}
       />
     );
@@ -33,7 +33,7 @@ describe("FormField", () => {
       <FormField
         label="title"
         value=""
-        onChange={() => {}}
+        onChange={onChangeMock}
         type={FormFieldType.RATING}
       />
     );

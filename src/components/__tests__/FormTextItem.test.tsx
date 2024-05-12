@@ -5,13 +5,13 @@ import FormTextItem from "../FormTextItem";
 describe("<FormTextItem />", () => {
   const itemTitle = "mock title";
   const text = "mock text";
-  const onChangeText = jest.fn();
+  const onChangeTextMock = jest.fn();
   it("should exist", () => {
     const { getByDisplayValue } = render(
       <FormTextItem
         itemTitle={itemTitle}
         text={text}
-        onChangeText={onChangeText}
+        onChangeText={onChangeTextMock}
       />
     );
     const formTextItem = getByDisplayValue(text);
@@ -23,13 +23,13 @@ describe("<FormTextItem />", () => {
       <FormTextItem
         itemTitle={itemTitle}
         text={text}
-        onChangeText={onChangeText}
+        onChangeText={onChangeTextMock}
       />
     );
 
     const input = getByDisplayValue(text);
     fireEvent.changeText(input, "new text");
 
-    expect(onChangeText).toHaveBeenCalledWith("new text");
+    expect(onChangeTextMock).toHaveBeenCalledWith("new text");
   });
 });
