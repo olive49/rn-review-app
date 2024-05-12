@@ -14,21 +14,9 @@ npm install
 yarn add
 ```
 
-## Step 2: Start the Metro Server
+## Step 2: Launch the Application
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that comes _with_ React Native. Open your command line at the project's root and run the following command:
-
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 3: Launch the Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal in the project's _root_. Run the following command to start the _Android_ or _iOS_ app:
+Run the following command to start the _Android_ or _iOS_ app:
 
 ### For Android
 
@@ -50,7 +38,7 @@ npm run ios
 yarn ios
 ```
 
-Before you know it, you should see the app running in your _Android Emulator_ or _iOS Simulator_. Assuming that your emulator/simulator is set up correctly. For troubleshooting the development environment setup, please refer to the React Native CLI documentation [here](https://reactnative.dev/docs/environment-setup).
+Before you know it, you should see the app running in your _Android Emulator_ or _iOS Simulator_. Assuming that your emulator/simulator is set up correctly.
 
 ## Congratulations! :tada:
 
